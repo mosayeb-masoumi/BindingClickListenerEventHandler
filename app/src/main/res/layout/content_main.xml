@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+
+        <variable
+            name="contact"
+            type="com.example.bindingclicklistenereventhandler.Contact"/>
+
+        <variable
+            name="clickHandler"
+            type="com.example.bindingclicklistenereventhandler.MainActivity.ClickHandler"/>
+
+    </data>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{contact.firstName}"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:text="@{contact.lastName}"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="simple click button"
+        android:layout_marginTop="20dp"
+        android:onClick="@{clickHandler::simpleClickButton}"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="long click button"
+        android:layout_marginTop="20dp"
+        android:onLongClick="@{clickHandler::longClickButton}"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="long click button with param"
+        android:layout_marginTop="20dp"
+        android:onClick="@{(v) -> clickHandler.simpleClickButtonwithParam(v,contact)}"
+        />
+
+
+</LinearLayout>
+</layout>
